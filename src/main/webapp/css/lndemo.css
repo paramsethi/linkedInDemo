@@ -1,0 +1,46 @@
+a {
+	color: #006699;
+	text-decoration: none;
+}
+
+.search-box {
+	float: right;
+}
+
+.profile-header {
+	background-color: #ddf0f8;
+	padding: 15px;
+	min-height: 90px;
+	margin: 0 0 15px;
+	zoom: 1;
+	border-bottom: 1px dotted grey;
+}
+
+#main {
+	width: 600px;
+	padding-left: 10px;
+	padding-top: 10px;
+	text-align: left;
+}
+
+.imgholder img {
+	height: auto;
+	margin: 0 0 0 5px;
+	padding: 4px;
+	background: white;
+}
+
+#results {
+	background-color: #ddf0f8;
+	padding: 15px;
+	margin: 0 0 15px;
+}
+
+tr {
+	border-bottom: 1px solid white;
+	padding: 15px;
+}
+
+.header{
+	padding:10px;
+}

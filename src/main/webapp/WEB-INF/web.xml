@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee 
+         http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	version="2.4">
+
+	<servlet>
+		<servlet-name>authenticate</servlet-name>
+		<servlet-class>com.ln.servlet.AuthenticateServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>authenticate</servlet-name>
+		<url-pattern>/authenticate</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>authorize</servlet-name>
+		<servlet-class>com.ln.servlet.AuthorizeServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>authorize</servlet-name>
+		<url-pattern>/authorize</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>profile</servlet-name>
+		<servlet-class>com.ln.servlet.UserServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>profile</servlet-name>
+		<url-pattern>/profile</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
+		<servlet-name>search</servlet-name>
+		<servlet-class>com.ln.servlet.SearchServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>search</servlet-name>
+		<url-pattern>/search</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>signout</servlet-name>
+		<servlet-class>com.ln.servlet.SignoutServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>signout</servlet-name>
+		<url-pattern>/signout</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+		<welcome-file>/index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/error.jsp</location>
+	</error-page>
+
+
+</web-app>
