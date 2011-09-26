@@ -31,11 +31,14 @@ public class ScribeConnectorImpl implements Connector, Constants {
 	private final OAuthService service;
 
 	public ScribeConnectorImpl() {
+		String callbackUrl = PropertyBag.getProperty(HOST_NAME)
+		+ PropertyBag.getProperty(CALL_BACK);
 		this.service = new ServiceBuilder().provider(LinkedInApi.class)
-				.apiKey(PropertyBag.getProperty(API_KEY))
-				.apiSecret(PropertyBag.getProperty(API_SECRET))
-				.callback(PropertyBag.getProperty(CALL_BACK)).build();
+		.apiKey(PropertyBag.getProperty(API_KEY))
+		.apiSecret(PropertyBag.getProperty(API_SECRET))
+		.callback(callbackUrl).build();
 	}
+	
 
 	/**
 	 * get request token and secret from linkedin using auth api call
