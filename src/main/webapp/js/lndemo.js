@@ -1,7 +1,7 @@
 function validateForm() {
 	var x = document.forms["search"]["query"].value;
 	if (x == null || x == "" || x=="Search...") {
-		alert("Search query must be filled out.");
+		alert("Please enter a valid search query.");
 		return false;
 	}
 }
