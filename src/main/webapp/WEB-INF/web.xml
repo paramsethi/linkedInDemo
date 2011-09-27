@@ -49,6 +49,15 @@
 		<servlet-name>signout</servlet-name>
 		<url-pattern>/signout</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>error</servlet-name>
+		<servlet-class>com.ln.servlet.ErrorHandler</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>error</servlet-name>
+		<url-pattern>/error</url-pattern>
+	</servlet-mapping>
 
 	<welcome-file-list>
 		<welcome-file>/index.jsp</welcome-file>
@@ -58,6 +67,5 @@
 		<error-code>404</error-code>
 		<location>/error.jsp</location>
 	</error-page>
-
 
 </web-app>
