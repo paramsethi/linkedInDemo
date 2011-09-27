@@ -10,7 +10,6 @@
 <link rel="stylesheet" type="text/css" href="/lndemo/css/lndemo.css" />
 <script type="text/javascript" src="/lndemo/js/lndemo.js"></script>
 <title>"${result.query}" Search Results | Linkedin Demo</title>
-
 </head>
 <body>
 	<div id="main">
@@ -34,66 +33,68 @@
 				</form>
 			</div>
 		</div>
+		<c:choose>
+			<c:when test='${result.totalCount<=0 }'>
+				<h2>No results found for : "${result.query}"</h2>
+			</c:when>
+			<c:otherwise>
+				<div id="header">
+					<h2>Search results for : "${result.query}"</h2>
+					Showing ${result.start +1} - ${result.count } of
+					${result.totalCount} Total.
+				</div>
 
-		<c:if test='${result.totalCount==0 }'>
-			<h2>No results found for : "${result.query}"</h2>
-		</c:if>
-		<c:if test='${result.totalCount >=0 }'>
-			<div id="header">
-				<h2>Search results for : "${result.query}"</h2>
-				Showing ${result.start +1} - ${result.count } of
-				${result.totalCount} Total.
-			</div>
-
-			<div id="results">
-				<c:set var="userResults" value="${result.users}" scope="request"></c:set>
-				<c:if test='${fn:length(userResults)>1}'>
-					<div>
-						<c:if test='${result.start+10<result.totalCount }'>
-							<a
-								href="/lndemo/search?query=${result.query}&start=${result.start+10}">Next
-							</a>
-						</c:if>
-						<c:if test='${result.start-10 >= 0 }'>
-							<a
-								href="/lndemo/search?query=${result.query}&start=${result.start-10}">
-								Prev </a>
-						</c:if>
-					</div>
-					<table>
-						<c:forEach var="user" items="${userResults}">
-							<tr>
-								<td width="50px;"><c:if test='${not empty user.pictureUrl}'>
-										<div class="imgholder">
-											<img src="${user.pictureUrl }"
-												alt="${user.firstName} ${user.lastName}" />
-										</div>
-									</c:if>
-								</td>
-								<td>
-									<div id="user-data">
-										<a href="/lndemo/profile?id=${user.id }"
-											title="Detailed profile of ${user.firstName} ${user.lastName}">${user.firstName}
-											${user.lastName} <c:if test='${user.distance>0}'>
-												<sup>${user.distance }</sup>
-											</c:if> </a>
-										<c:if test='${not empty user.headline }'>
-											<br />
-											<b>${user.headline }</b>
+				<div id="results">
+					<c:set var="userResults" value="${result.users}" scope="request"></c:set>
+					<c:if test='${fn:length(userResults)>1}'>
+						<div>
+							<c:if test='${result.start+10<result.totalCount }'>
+								<a
+									href="/lndemo/search?query=${result.query}&start=${result.start+10}">Next
+								</a>
+							</c:if>
+							<c:if test='${result.start-10 >= 0 }'>
+								<a
+									href="/lndemo/search?query=${result.query}&start=${result.start-10}">
+									Prev </a>
+							</c:if>
+						</div>
+						<table>
+							<c:forEach var="user" items="${userResults}">
+								<tr>
+									<td width="50px;"><c:if
+											test='${not empty user.pictureUrl}'>
+											<div class="imgholder">
+												<img src="${user.pictureUrl }"
+													alt="${user.firstName} ${user.lastName}" />
+											</div>
 										</c:if>
-										<c:if test='${not empty user.city}'>
-											<br />${user.city},</c:if>
-										<c:if test='${not empty user.country}'>
+									</td>
+									<td>
+										<div id="user-data">
+											<a href="/lndemo/profile?id=${user.id }"
+												title="Detailed profile of ${user.firstName} ${user.lastName}">${user.firstName}
+												${user.lastName} <c:if test='${user.distance>0}'>
+													<sup>${user.distance }</sup>
+												</c:if> </a>
+											<c:if test='${not empty user.headline }'>
+												<br />
+												<b>${user.headline }</b>
+											</c:if>
+											<c:if test='${not empty user.city}'>
+												<br />${user.city},</c:if>
+											<c:if test='${not empty user.country}'>
 										${user.country }</c:if>
-										<c:if test='${not empty user.industry}'>| ${user.industry }</c:if>
-									</div></td>
-							</tr>
-							<tr></tr>
-						</c:forEach>
-					</table>
-				</c:if>
-			</div>
-		</c:if>
+											<c:if test='${not empty user.industry}'>| ${user.industry }</c:if>
+										</div></td>
+								</tr>
+								<tr></tr>
+							</c:forEach>
+						</table>
+					</c:if>
+				</div>
+			</c:otherwise>
+		</c:choose>
 	</div>
 </body>
 </html>
