@@ -23,7 +23,7 @@
 			if(request.getParameter("error")!=null)
 				out.println(request.getParameter("error"));
 			
-			
+			if(exception!=null)
 				out.println(exception.toString());
 				%>
 		</p>
