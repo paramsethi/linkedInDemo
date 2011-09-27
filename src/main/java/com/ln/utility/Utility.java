@@ -1,7 +1,6 @@
 package com.ln.utility;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 
 import com.ln.dao.Connector;
 import com.ln.dao.Connector.SiteResponse;
@@ -93,7 +92,7 @@ public class Utility implements Constants {
 		cookie.setMaxAge(COOKIE_MAX_AGE); // set max age to one hour
 		return cookie;
 	}
-	
+
 	/**
 	 * Remove given cookie
 	 * 
@@ -101,7 +100,7 @@ public class Utility implements Constants {
 	 * @param cookieName
 	 * @return
 	 */
-	public static Cookie removeCookie(Cookie[] cookies, String cookieName){
+	public static Cookie removeCookie(Cookie[] cookies, String cookieName) {
 		Cookie cookie = null;
 		if (cookies != null) {
 			for (Cookie temp : cookies) {
@@ -111,7 +110,7 @@ public class Utility implements Constants {
 				}
 			}
 		}
-		if(cookie!=null){
+		if (cookie != null) {
 			cookie.setMaxAge(0);
 		}
 		return cookie;
@@ -123,4 +122,5 @@ public class Utility implements Constants {
 
 		return false;
 	}
+
 }
