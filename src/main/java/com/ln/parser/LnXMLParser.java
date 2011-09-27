@@ -59,6 +59,7 @@ public class LnXMLParser {
 	public static void getSearchResults(String xml, SearchResult result)
 			throws LnDemoException {
 		List<User> users = null;
+		User tmpUser = null;
 		try {
 			Document doc = XMLParser.getXMLDoc(xml);
 			NodeList peopleSrch = doc.getElementsByTagName("people-search");
@@ -76,8 +77,12 @@ public class LnXMLParser {
 									Node person = persons.item(j);
 									if (person != null
 											&& "person".equalsIgnoreCase(person
-													.getNodeName()))
-										users.add(getUserFromNode(person));
+													.getNodeName())) {
+										tmpUser = getUserFromNode(person);
+										if (null != tmpUser
+												&& tmpUser.getDistance() <= 3)
+											users.add(tmpUser);
+									}
 								}
 								result.setUsers(users);
 							}
@@ -135,9 +140,16 @@ public class LnXMLParser {
 								.equalsIgnoreCase("industry"))
 							user.setIndustry(temp.getTextContent());
 						else if (temp.getNodeName()
-								.equalsIgnoreCase("distance"))
-							user.setDistance(temp.getTextContent());
-						else if (temp.getNodeName().equalsIgnoreCase(
+								.equalsIgnoreCase("distance")) {
+							int distance = -1;
+							try {
+								distance = Integer.parseInt(temp
+										.getTextContent());
+							} catch (NumberFormatException nfe) {
+								log.error("Invalid distance", nfe);
+							}
+							user.setDistance(distance);
+						} else if (temp.getNodeName().equalsIgnoreCase(
 								"picture-url"))
 							user.setPictureUrl(temp.getTextContent());
 						else if (temp.getNodeName().equalsIgnoreCase(
