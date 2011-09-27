@@ -8,7 +8,7 @@ public class User {
 	private String id;
 	private String city;
 	private String country;
-	private String distance;
+	private int distance;
 	private String industry;
 	private String currentShare;
 	private String numConnections;
@@ -86,7 +86,7 @@ public class User {
 	/**
 	 * @return the distance
 	 */
-	public String getDistance() {
+	public int getDistance() {
 		return distance;
 	}
 
@@ -94,7 +94,7 @@ public class User {
 	 * @param distance
 	 *            the distance to set
 	 */
-	public void setDistance(String distance) {
+	public void setDistance(int distance) {
 		this.distance = distance;
 	}
 
