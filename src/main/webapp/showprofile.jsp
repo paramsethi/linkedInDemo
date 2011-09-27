@@ -54,10 +54,6 @@
 						<td>${user.currPosition }</td>
 					</tr>
 					<tr>
-						<td>Past</td>
-						<td>${user.pastPositions }</td>
-					</tr>
-					<tr>
 						<td>Recommendations</td>
 						<td>${user.numRecommenders } people have recommended
 							${user.firstName}</td>
