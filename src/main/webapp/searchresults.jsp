@@ -47,17 +47,18 @@
 				<div id="results">
 					<c:set var="userResults" value="${result.users}" scope="request"></c:set>
 					<c:if test='${fn:length(userResults)>1}'>
-						<div>
-							<c:if test='${result.start+10<result.totalCount }'>
-								<a
-									href="/lndemo/search?query=${result.query}&start=${result.start+10}">Next
-								</a>
-							</c:if>
+						<div style="float:right;padding:10px;">
 							<c:if test='${result.start-10 >= 0 }'>
 								<a
 									href="/lndemo/search?query=${result.query}&start=${result.start-10}">
 									Prev </a>
 							</c:if>
+							<c:if test='${result.start+10<result.totalCount }'>
+								<a
+									href="/lndemo/search?query=${result.query}&start=${result.start+10}">Next
+								</a>
+							</c:if>
+							
 						</div>
 						<table>
 							<c:forEach var="user" items="${userResults}">
