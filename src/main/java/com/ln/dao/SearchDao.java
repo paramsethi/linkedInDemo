@@ -28,9 +28,12 @@ public class SearchDao {
 	public void search(SearchResult result) throws LnDemoException {
 		StringBuilder url = new StringBuilder(
 				"http://api.linkedin.com/v1/people-search:(people:(id,first-name,last-name,headline,industry,distance,picture-url,location:(name,country:(code))),num-results)?keywords=");
-		url.append(result.getQuery()).append("&start=")
-				.append(result.getStart()).append("&count=")
-				.append(result.getCount());
+		String query = result.getQuery().replaceAll(" ", "-");
+		query = query.replaceAll("\\W", "-");
+
+		url.append(query).append("&start=").append(result.getStart())
+				.append("&count=").append(result.getCount());
+
 		String xml = Utility.getXML(url.toString(), conn);
 		LnXMLParser.getSearchResults(xml, result);
 
