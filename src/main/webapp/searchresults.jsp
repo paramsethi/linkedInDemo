@@ -40,7 +40,7 @@
 			<c:otherwise>
 				<div id="header">
 					<h2>Search results for : "${result.query}"</h2>
-					Showing ${result.start +1} - ${result.count } of
+					Showing ${result.start +1} - ${result.start + result.count } of
 					${result.totalCount} Total.
 				</div>
 
