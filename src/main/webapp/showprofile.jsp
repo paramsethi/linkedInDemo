@@ -64,7 +64,7 @@
 					</tr>
 					<tr>
 						<td>Public Profile</td>
-						<td><a hre="${user.publicProfileUrl }"
+						<td><a href="${user.publicProfileUrl }"
 							alt="public profile for ${user.firstName}">${user.publicProfileUrl}</a>
 						</td>
 					</tr>
